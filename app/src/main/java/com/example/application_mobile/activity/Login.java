@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.application_mobile.DbHelper.DbHelper;
 import com.example.application_mobile.R;
 import com.example.application_mobile.fragment.fuelStation.FuelStation;
+import com.example.application_mobile.model.User;
 
 public class Login extends AppCompatActivity {
 
@@ -49,8 +50,14 @@ public class Login extends AppCompatActivity {
                     if(checkPassword == true){
                        Toast.makeText(Login.this,"Login Success!!!",Toast.LENGTH_SHORT).show();
 
+
+                        User user = dbHelper.getUserData(email);
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        System.out.println("METHANA");
+                        System.out.println(user);
                         intent.putExtra("email", email);
+                        intent.putExtra("id", user.getId());
+                        intent.putExtra("role",user.getRole());
                         startActivity(intent);
 
                     }

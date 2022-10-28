@@ -46,7 +46,7 @@ public class SignUp extends AppCompatActivity {
                 String mobile_ = mobile.getText().toString();
                 String email_ = email.getText().toString();
                 String password_ = password.getText().toString();
-                String role = "CUSTOMER";
+                String role = "ADMIN";
 
                 if(TextUtils.isEmpty(username_) || TextUtils.isEmpty(address_) || TextUtils.isEmpty(mobile_) || TextUtils.isEmpty(email_) || TextUtils.isEmpty(password_) ){
                     Toast.makeText(SignUp.this,"All Fields Required !!!",Toast.LENGTH_SHORT).show();
