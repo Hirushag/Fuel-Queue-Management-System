@@ -16,4 +16,6 @@
     <color name="back_ground_colour">#e3e6e8</color>
     <color name="edit_delete">#faf7f7</color>
     <color name="bottom_nv_bg">#03A9F4</color>
+    <color name="color_1">#4b019a</color>
+    <color name="color_2">#aa07cf</color>
 </resources>

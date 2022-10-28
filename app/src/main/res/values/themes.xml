@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Applicationmobile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#40D13B</item>   <!--button colour-->
+        <item name="colorPrimary">#4b019a</item>   <!--button colour-->
         <item name="colorPrimaryVariant">@color/fastlane_background</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
