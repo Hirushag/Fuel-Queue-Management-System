@@ -12,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
-        android:backgroundTint="@color/color_2"
+        android:textSize="16dp"
+        android:backgroundTint="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -22,38 +23,38 @@
         android:id="@+id/imageView4"
         android:layout_width="440dp"
         android:layout_height="760dp"
-        app:srcCompat="@drawable/images"
+        app:srcCompat="@drawable/splash"
         tools:layout_editor_absoluteX="-15dp"
         tools:layout_editor_absoluteY="-51dp"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="323dp"
-        android:layout_height="146dp"
-        android:fontFamily="sans-serif-black"
-        android:text="OKTANE SOLUTIONS"
-        android:textColor="@color/design_default_color_background"
-        android:textSize="150px"
-        app:flow_horizontalAlign="center"
+<!--    <TextView-->
+<!--        android:id="@+id/textView3"-->
+<!--        android:layout_width="323dp"-->
+<!--        android:layout_height="146dp"-->
+<!--        android:fontFamily="sans-serif-black"-->
+<!--        android:text="OKTANE SOLUTIONS"-->
+<!--        android:textColor="@color/design_default_color_background"-->
+<!--        android:textSize="150px"-->
+<!--        app:flow_horizontalAlign="center"-->
 
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="103dp" />
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteX="44dp"-->
+<!--        tools:layout_editor_absoluteY="103dp" />-->
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="323dp"
-        android:layout_height="146dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Welcome ..."
-        android:textColor="@color/design_default_color_background"
-        android:textSize="90px"
-        app:flow_horizontalAlign="center"
+<!--    <TextView-->
+<!--        android:id="@+id/textView9"-->
+<!--        android:layout_width="323dp"-->
+<!--        android:layout_height="146dp"-->
+<!--        android:fontFamily="sans-serif-black"-->
+<!--        android:text="Welcome ..."-->
+<!--        android:textColor="@color/design_default_color_background"-->
+<!--        android:textSize="90px"-->
+<!--        app:flow_horizontalAlign="center"-->
 
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="464dp" />
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteX="33dp"-->
+<!--        tools:layout_editor_absoluteY="464dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
