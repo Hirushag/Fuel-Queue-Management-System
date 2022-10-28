@@ -19,7 +19,7 @@ public class DbHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table users (id TEXT primary key ,username TEXT,address TEXT , mobile TEXT , email TEXT,password TEXT,role TEXT)");
+        db.execSQL("create table users (id INTEGER primary key AUTOINCREMENT ,username TEXT,address TEXT , mobile TEXT , email TEXT,password TEXT,role TEXT)");
     }
 
     @Override
@@ -70,27 +70,20 @@ public class DbHelper extends SQLiteOpenHelper{
             return false;
     }
 
-
     @SuppressLint("Range")
     public User getUserData(String email){
-        System.out.println(email);
-        System.out.println("OBJECTjjjjjttttttttttttttttttttttttjjjjjjjj========fff============");
         User user = new User();
-        System.out.println("OBJECTjjjjjttttttttttttttttttttttttjjjjjjjj====================");
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from users where email =?"  ,new String[]{email});
-        System.out.println("yyyyyyyyyyyyyyOBJECTjjjjjttttttttttttttttttttttttjjjjjjjj====================");
+
         if(cursor.moveToFirst()){
             System.out.println("OBJECTjjjjjjjjjjjjj====================");
-            user.setName(cursor.getString(cursor.getColumnIndex("username"))); ;
-            user.setId(cursor.getString(cursor.getColumnIndex("id")));  ;
-            user.setRole(cursor.getString(cursor.getColumnIndex("role"))); ;
+            user.setName(cursor.getString(cursor.getColumnIndex("username")));
+            user.setId(cursor.getString(cursor.getColumnIndex("id")));
+            user.setRole(cursor.getString(cursor.getColumnIndex("role")));
             System.out.println(user);
             return user;
         }
-        System.out.println("OBJECT====================");
-        System.out.println(user);
-
         return user;
     }
 

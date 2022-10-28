@@ -8,12 +8,5 @@
         android:id="@+id/admin_stations"
         android:title="Admin Fuel Stations"
         android:icon="@drawable/tkpm63y"/>
-    <item
-        android:id="@+id/invoice"
-        android:title="Invoice"
-        android:icon="@drawable/delivery_bg"/>
-    <item
-        android:id="@+id/quotation"
-        android:title="Quotation"
-        android:icon="@drawable/quatation_removebg_preview"/>
+
 </menu>

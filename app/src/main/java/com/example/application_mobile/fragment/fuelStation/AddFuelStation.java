@@ -1,5 +1,10 @@
 package com.example.application_mobile.fragment.fuelStation;
 
+import static android.content.Context.MODE_PRIVATE;
+import static android.os.ParcelFileDescriptor.MODE_APPEND;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -38,6 +43,10 @@ public class AddFuelStation extends Fragment {
     private Common common = new Common();
     private FuelConstant fuelConstant = new FuelConstant();
 
+
+
+
+
     public AddFuelStation() {
         //create default constructor
     }
@@ -58,6 +67,7 @@ public class AddFuelStation extends Fragment {
         button = view.findViewById(R.id.add_fuel_station_btn);
 
         FuelStation fuelStation = new FuelStation();
+
 
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -95,6 +105,7 @@ public class AddFuelStation extends Fragment {
             jsonBody.put("'OpenDateTime'", open_time.getText().toString());
             jsonBody.put("CloseDateTime", close_time.getText().toString());
             jsonBody.put("LicenceNumber", license_number.getText().toString());
+            jsonBody.put("OwnerId", "Owner12");
         } catch (JSONException e) {
             e.printStackTrace();
         }

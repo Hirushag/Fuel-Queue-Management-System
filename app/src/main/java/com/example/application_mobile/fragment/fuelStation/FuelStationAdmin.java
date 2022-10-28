@@ -1,6 +1,10 @@
 package com.example.application_mobile.fragment.fuelStation;
 
+import static android.content.Context.MODE_PRIVATE;
+import static android.os.ParcelFileDescriptor.MODE_APPEND;
+
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -82,6 +86,8 @@ public class FuelStationAdmin extends Fragment {
         //set adepter to recycle view
         recyclerView.setAdapter(adapter);
 
+
+
         button.setOnClickListener(new View.OnClickListener() {
 
             Bundle bundle = new Bundle();
@@ -97,9 +103,11 @@ public class FuelStationAdmin extends Fragment {
         return view;
     }
 
+
 //    pass user ID below
 
     private void getFuelStationDetails() {
+
 
         System.out.println("GAGANA");
         System.out.println( common.getGET_FUEL_STATIONS());
@@ -109,7 +117,7 @@ public class FuelStationAdmin extends Fragment {
         jsonObjectRequest = new JsonObjectRequest(
 
                 Request.Method.GET,
-                common.getGET_FUEL_STATIONS_BY_ADMINID()+"Ok3456789",
+                common.getGET_FUEL_STATIONS_BY_ADMINID()+"Owner12",
                 null,
 
                 new Response.Listener<JSONObject>() {
