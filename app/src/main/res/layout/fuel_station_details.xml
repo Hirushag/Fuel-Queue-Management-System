@@ -40,7 +40,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.216" />
+            app:layout_constraintVertical_bias="0.451" />
 
         <TextView
             android:id="@+id/station_name"
@@ -70,7 +70,7 @@
             app:layout_constraintHorizontal_bias="0.728"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.447" />
+            app:layout_constraintVertical_bias="0.548" />
 
         <TextView
             android:id="@+id/vehicle_quantity"
@@ -85,25 +85,38 @@
             app:layout_constraintHorizontal_bias="0.728"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.526" />
+            app:layout_constraintVertical_bias="0.619" />
+
+        <TextView
+            android:id="@+id/que_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/space"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.728"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.678" />
 
         <TextView
             android:id="@+id/station_address"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
+            android:layout_width="108dp"
+            android:layout_height="45dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="10dp"
             android:layout_marginTop="24dp"
             android:text="@string/space"
-            android:textAlignment="center"
-            android:textColor="#000000"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.783"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.127" />
+            app:layout_constraintVertical_bias="0.123" />
 
         <Button
             android:id="@+id/diesel"
@@ -112,13 +125,13 @@
             android:text="@string/diesel"
             android:textColor="#000000"
             android:textSize="12sp"
-            app:backgroundTint="#FF0000"
+            app:backgroundTint="#00BCD4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.214" />
+            app:layout_constraintVertical_bias="0.449" />
 
         <TextView
             android:id="@+id/olt_1"
@@ -139,8 +152,8 @@
             android:textColor="#070707"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
-            app:layout_constraintVertical_bias="0.083" />
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            app:layout_constraintVertical_bias="0.194" />
 
         <TextView
             android:id="@+id/sl_7"
@@ -150,8 +163,19 @@
             android:textColor="#070707"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
-            app:layout_constraintVertical_bias="0.196" />
+            app:layout_constraintTop_toBottomOf="@+id/sl_10"
+            app:layout_constraintVertical_bias="0.069" />
+
+        <TextView
+            android:id="@+id/sl_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/que_count"
+            android:textColor="#070707"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sl_10"
+            app:layout_constraintVertical_bias="0.198" />
 
         <TextView
             android:id="@+id/sl_"
@@ -164,43 +188,47 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.132" />
 
+
         <TextView
-            android:id="@+id/sl3"
+            android:id="@+id/sl_9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_vehicle"
+            android:layout_marginStart="4dp"
+            android:text="@string/vehicle_type"
             android:textColor="#070707"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/petrol"
-            app:layout_constraintHorizontal_bias="0.423"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.306" />
+            app:layout_constraintVertical_bias="0.265" />
 
         <Button
             android:id="@+id/join_btn"
             android:layout_width="311dp"
             android:layout_height="40dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="84dp"
             android:text="@string/join_to_the_queue"
             app:layout_constraintEnd_toEndOf="@+id/diesel"
+            app:layout_constraintHorizontal_bias="0.514"
             app:layout_constraintStart_toStartOf="@+id/petrol"
-            app:layout_constraintTop_toBottomOf="@+id/sl_10" />
+            app:layout_constraintTop_toBottomOf="@+id/sl_8" />
 
         <Button
             android:id="@+id/exit_before"
             android:layout_width="311dp"
             android:layout_height="40dp"
+            android:layout_marginTop="84dp"
             android:backgroundTint="#FFEB3B"
             android:text="@string/exit_before_pump_fuel"
             app:layout_constraintEnd_toEndOf="@+id/join_btn"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/join_btn"
-            app:layout_constraintTop_toBottomOf="@+id/join_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/sl_8" />
 
         <Button
             android:id="@+id/exit_after"
             android:layout_width="311dp"
             android:layout_height="40dp"
+            android:layout_marginTop="4dp"
             android:backgroundTint="#FF1100"
             android:text="@string/exit_after_pump_fuel"
             app:layout_constraintEnd_toEndOf="@+id/exit_before"
@@ -208,13 +236,44 @@
             app:layout_constraintStart_toStartOf="@+id/exit_before"
             app:layout_constraintTop_toBottomOf="@+id/exit_before" />
 
+        <TextView
+            android:id="@+id/can_not_view"
+            android:layout_width="317dp"
+            android:layout_height="153dp"
+            android:layout_marginTop="50px"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/can_not"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="100px"
+            app:layout_constraintBottom_toBottomOf="@+id/exit_after"
+            app:layout_constraintTop_toBottomOf="@+id/sl_8"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="18dp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/please_select_the_fuel_type"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/petrol"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/station_address"
+            app:layout_constraintVertical_bias="0.99" />
+
         <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="283dp"
-            android:layout_height="37dp"
-            app:layout_constraintEnd_toEndOf="@+id/diesel"
-            app:layout_constraintStart_toStartOf="@+id/petrol"
-            app:layout_constraintTop_toBottomOf="@+id/sl3" />
+            android:id="@+id/spinner_vehicle_type"
+            android:layout_width="275dp"
+            android:layout_height="31dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sl_9"
+            app:layout_constraintVertical_bias="0.363" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

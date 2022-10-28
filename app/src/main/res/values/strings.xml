@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">Fuel Queue Management</string>
     <string name="station_name">Station Name</string>
+    <string name="station_id">Station ID</string>
     <string name="add_station">Add Station</string>
     <string name="fuel_stations">Fuel Stations</string>
     <string name="station_address_text">Station Address</string>
-    <string name="available_quantity">Available Quantity</string>
-    <string name="Vehicle_quantity">Vehicle Quantity</string>
+    <string name="vehicle_type">Vehicle Type</string>
+    <string name="view_btn">View</string>
+    <string name="available_quantity">Available Fuel Quantity</string>
+    <string name="Vehicle_quantity">Vehicle Count</string>
+    <string name="que_count">Que Count</string>
     <string name="select_vehicle">Select Vehicle</string>
     <string name="station_town">Station Town</string>
     <string name="station_open">Station Open</string>
@@ -18,12 +22,18 @@
     <string name="space">space</string>
     <string name="create_fuel_station">Add Fuel Station</string>
     <string name="join_to_the_queue">Join to the Queue</string>
+    <string name="on_my_way">On My WAy</string>
     <string name="exit_before_pump_fuel">Exit Before Pump Fuel</string>
     <string name="exit_after_pump_fuel">Exit After Pump Fuel</string>
+    <string name="please_select_the_fuel_type">Please Select the Fuel Type</string>
+    <string name="can_not">Sorry , Can Not Enter To The Que</string>
     <string name="petrol_quantity">Available Petrol Quantity</string>
     <string name="diesel_quantity">Available diesel Quantity</string>
     <string name="fuel_type">Fuel Type</string>
-    <string name="fuel_quantity">Fuel Quantity</string>
+    <string name="fuel_quantity">Fuel Quantity(L)</string>
+    <string name="open_close_status">Open/Close Fuel Station</string>
+    <string name="open_station">Open</string>
+    <string name="close_station">Close</string>
     <string name="petrol">Petrol</string>
     <string name="diesel">Diesel</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -34,13 +44,12 @@
         <item>Car</item>
         <item>Bike</item>
         <item>Van</item>
-        <item>Lorry</item>
     </string-array>
 
     <string-array name="fuel">
         <item>Select a Fuel Type</item>
-        <item>PATROL</item>
-        <item>DIESEL</item>
+        <item>Petrol</item>
+        <item>Diesel</item>
     </string-array>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>

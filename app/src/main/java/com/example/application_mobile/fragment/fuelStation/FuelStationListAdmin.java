@@ -2,6 +2,10 @@ package com.example.application_mobile.fragment.fuelStation;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +40,7 @@ import lombok.SneakyThrows;
 public class FuelStationListAdmin extends Fragment {
 
     private RecyclerView recyclerView;
+    private CardView stations_list_all_card_view_admin;
     private FuelStationAdminAdapter adapter;
     private List<FuelStation> stationsList = new ArrayList<>();
     private final Common common = new Common();
@@ -48,6 +53,17 @@ public class FuelStationListAdmin extends Fragment {
     public FuelStationListAdmin() {
 
     }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //call get oder details method for get oder list
+        getFuelStationDetails();
+
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,17 +78,20 @@ public class FuelStationListAdmin extends Fragment {
         //find the id with relevant component
         View view = inflater.inflate(R.layout.fragment_fuel_station_admin, container, false);
         recyclerView = view.findViewById(R.id.fuel_recycle_view_admin);
+        stations_list_all_card_view_admin = view.findViewById(R.id.stations_list_all_card_view_admin);
         adapter = new FuelStationAdminAdapter(stationsList,getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         //set adepter to recycle view
         recyclerView.setAdapter(adapter);
+
         return view;
 
     }
 
     private void getFuelStationDetails() {
-        System.out.println( common.getGET_FUEL_STATIONS());
+
+        System.out.println("test test");
         //RequestQueue initialized
         requestQueue = Volley.newRequestQueue(getContext());
 
@@ -91,6 +110,10 @@ public class FuelStationListAdmin extends Fragment {
 
                         Log.i("Response is {} ", response.toString());
 
+
+                        System.out.println("tttttttttttttttttttttttttttttttttttttttttttttttttt");
+                        System.out.println(response.toString());
+
                         stationsList.clear();
 
 
@@ -102,13 +125,16 @@ public class FuelStationListAdmin extends Fragment {
                                 com.example.application_mobile.model.FuelStation fuelStations = new com.example.application_mobile.model.FuelStation();
                                 JSONObject obj = response.getJSONObject(i);
 
+
                                 System.out.println(obj);
 
                                 //set date to object
                                 fuelStations.setId(obj.getString(fuelConstant.getId()));
                                 fuelStations.setName(obj.getString(fuelConstant.getName()));
                                 fuelStations.setAddress(obj.getString(fuelConstant.getAddress()));
-                                fuelStations.getOpenDateTime();
+                                fuelStations.setOpenDateTime(obj.getString(fuelConstant.getOpenDateTime()));
+                                fuelStations.setTotalPetrol(Integer.parseInt(obj.getString(fuelConstant.getTotalPetrol())));
+                                fuelStations.setTotalDiesel(Integer.parseInt(obj.getString(fuelConstant.getTotalDiesel())));
                                 fuelStations.setCloseDateTime(obj.getString(fuelConstant.getCloseDateTime()));
                                 fuelStations.setIsOpen(String.valueOf(fuelConstant.getIsOpen()));
 

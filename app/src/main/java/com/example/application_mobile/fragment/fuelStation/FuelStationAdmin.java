@@ -19,9 +19,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.application_mobile.R;
 import com.example.application_mobile.adapter.FuelStationAdapter;
+import com.example.application_mobile.adapter.FuelStationAdminAdapter;
 import com.example.application_mobile.constant.Common;
 import com.example.application_mobile.constant.FuelConstant;
 import com.example.application_mobile.model.FuelStation;
@@ -45,9 +47,10 @@ public class FuelStationAdmin extends Fragment {
     private final Common common = new Common();
     private final FuelConstant fuelConstant = new FuelConstant();
     private RecyclerView recyclerView;
-    private FuelStationAdapter adapter;
+    private FuelStationAdminAdapter adapter;
     private RequestQueue requestQueue;
     private JsonArrayRequest jsonArrayRequest;
+    private JsonObjectRequest jsonObjectRequest;
 
 
     public FuelStationAdmin() {
@@ -72,7 +75,7 @@ public class FuelStationAdmin extends Fragment {
         recyclerView = view.findViewById(R.id.fuel_recycle_view_admin);
         button = view.findViewById(R.id.add_fuel_station);
 
-        adapter = new FuelStationAdapter(stationsList,getContext());
+        adapter = new FuelStationAdminAdapter(stationsList,getContext());
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -94,56 +97,58 @@ public class FuelStationAdmin extends Fragment {
         return view;
     }
 
+//    pass user ID below
+
     private void getFuelStationDetails() {
+
+        System.out.println("GAGANA");
         System.out.println( common.getGET_FUEL_STATIONS());
         //RequestQueue initialized
         requestQueue = Volley.newRequestQueue(getContext());
 
-        jsonArrayRequest = new JsonArrayRequest(
+        jsonObjectRequest = new JsonObjectRequest(
 
                 Request.Method.GET,
-                common.getGET_FUEL_STATIONS(),
+                common.getGET_FUEL_STATIONS_BY_ADMINID()+"Ok3456789",
                 null,
 
-                new Response.Listener<JSONArray>() {
+                new Response.Listener<JSONObject>() {
 
                     @SuppressLint("LongLogTag")
                     @SneakyThrows
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
 
                         Log.i("Response is {} ", response.toString());
 
                         stationsList.clear();
 
+                        System.out.println("HIRUSHA");
+                        System.out.println(response.toString());
+
 
                         //read list data
-                        for (int i = 0; i < response.length(); i++) {
 
-                            try {
+                        FuelStation fuelStations = new FuelStation();
+//                                JSONObject obj = response.toString();
 
-                                com.example.application_mobile.model.FuelStation fuelStations = new com.example.application_mobile.model.FuelStation();
-                                JSONObject obj = response.getJSONObject(i);
+//                                System.out.println(obj);
 
-                                System.out.println(obj);
-
-                                //set date to object
-                                fuelStations.setId(obj.getString(fuelConstant.getId()));
-                                fuelStations.setName(obj.getString(fuelConstant.getName()));
-                                fuelStations.setAddress(obj.getString(fuelConstant.getAddress()));
-                                fuelStations.getOpenDateTime();
-                                fuelStations.setCloseDateTime(obj.getString(fuelConstant.getCloseDateTime()));
-                                fuelStations.setIsOpen(String.valueOf(fuelConstant.getIsOpen()));
-
-
-                                stationsList.add(fuelStations);
-
-                            } catch (JSONException e) {
-
-                                e.printStackTrace();
-                            }
-
+                        //set date to object
+                        try {
+                            fuelStations.setId(response.getString("Id"));
+                            fuelStations.setName(response.getString("Name"));
+                            fuelStations.setAddress(response.getString("Address").concat(response.getString("City")));
+                            fuelStations.setIsOpen(String.valueOf(fuelConstant.getIsOpen()));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
+
+
+
+                        stationsList.add(fuelStations);
+
+
                         Log.i("filtered fuelStation response {}", stationsList.toString());
 
                         adapter.notifyDataSetChanged();
@@ -153,7 +158,7 @@ public class FuelStationAdmin extends Fragment {
                 }, (Response.ErrorListener) error -> Log.e("Response {} ", error.toString())
 
         );
-        requestQueue.add(jsonArrayRequest);
+        requestQueue.add(jsonObjectRequest);
 
     }
 }

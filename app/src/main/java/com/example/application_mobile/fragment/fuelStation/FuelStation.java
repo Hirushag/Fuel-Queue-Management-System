@@ -119,7 +119,9 @@ public class FuelStation extends Fragment {
                                 fuelStations.setId(obj.getString(fuelConstant.getId()));
                                 fuelStations.setName(obj.getString(fuelConstant.getName()));
                                 fuelStations.setAddress(obj.getString(fuelConstant.getAddress()));
-                                fuelStations.getOpenDateTime();
+                                fuelStations.setOpenDateTime(obj.getString(fuelConstant.getOpenDateTime()));
+                                fuelStations.setTotalPetrol(Integer.parseInt(obj.getString(fuelConstant.getTotalPetrol())));
+                                fuelStations.setTotalDiesel(Integer.parseInt(obj.getString(fuelConstant.getTotalDiesel())));
                                 fuelStations.setCloseDateTime(obj.getString(fuelConstant.getCloseDateTime()));
                                 fuelStations.setIsOpen(String.valueOf(fuelConstant.getIsOpen()));
 

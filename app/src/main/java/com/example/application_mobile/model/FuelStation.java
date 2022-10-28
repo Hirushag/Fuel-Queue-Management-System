@@ -15,6 +15,8 @@ public class FuelStation {
     private String OwnerId;
     private String OpenDateTime;
     private String CloseDateTime;
+
+
     private String IsAir;
     private String IsOpen;
     private String City;
@@ -22,6 +24,35 @@ public class FuelStation {
     private String OnTheWayQue;
     private String Que;
     private String HistoryQue;
+    private int TotalPetrol;
+    private int TotalDiesel;
+
+    public int getTotalPetrol() {
+        return TotalPetrol;
+    }
+
+    public void setTotalPetrol(int totalPetrol) {
+        TotalPetrol = totalPetrol;
+    }
+
+    public int getTotalDiesel() {
+        return TotalDiesel;
+    }
+
+    public void setTotalDiesel(int totalDiesel) {
+        TotalDiesel = totalDiesel;
+    }
+
+
+    public String getOpenDateTime() {
+        return OpenDateTime;
+    }
+
+    public void setOpenDateTime(String openDateTime) {
+        OpenDateTime = openDateTime;
+    }
+
+
 
     public String getId() {
         return Id;
@@ -55,8 +86,6 @@ public class FuelStation {
         OwnerId = ownerId;
     }
 
-
-
     public String getIsAir() {
         return IsAir;
     }
@@ -65,13 +94,6 @@ public class FuelStation {
         IsAir = isAir;
     }
 
-    public String getOpenDateTime() {
-        return OpenDateTime;
-    }
-
-    public void setOpenDateTime(String openDateTime) {
-        OpenDateTime = openDateTime;
-    }
 
     public String getCloseDateTime() {
         return CloseDateTime;
@@ -128,4 +150,6 @@ public class FuelStation {
     public void setHistoryQue(String historyQue) {
         HistoryQue = historyQue;
     }
+
+
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class FuelStationAdminAdapter extends RecyclerView.Adapter<FuelStationAdm
     public FuelStationAdminAdapter(List<FuelStation> listdata, Context context) {
         this.listdata = listdata;
         this.context = context;
+
     }
 
     @NonNull
@@ -55,10 +57,8 @@ public class FuelStationAdminAdapter extends RecyclerView.Adapter<FuelStationAdm
 
         holder.textView_1.setText(listdata.get(position).getName());
         holder.textView_2.setText(listdata.get(position).getAddress());
-        holder.textView_3.setText(listdata.get(position).getOpenDateTime());
-        holder.textView_4.setText(listdata.get(position).getCloseDateTime());
-        holder.textView_5.setText(listdata.get(position).getIsAir());
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.textView_3.setText(listdata.get(position).getId());
+        holder.button.setOnClickListener(new View.OnClickListener() {
 
 
 
@@ -67,13 +67,15 @@ public class FuelStationAdminAdapter extends RecyclerView.Adapter<FuelStationAdm
 
                 Bundle bundle = new Bundle();
 
-                bundle.putString("Id", listdata.get(position).getId());
-                bundle.putString("Name", listdata.get(position).getName());
-                bundle.putString("Address", listdata.get(position).getAddress());
-                bundle.putString("OpenTime", listdata.get(position).getOpenDateTime());
-                bundle.putString("CloseTime", listdata.get(position).getCloseDateTime());
-                bundle.putString("Status", listdata.get(position).getIsOpen());
+                System.out.println("HERE=================");
+                System.out.println(listdata);
 
+                bundle.putString("Id", listdata.get(position).getId());
+                bundle.putString("PetrolQuantity", String.valueOf(listdata.get(position).getTotalPetrol()));
+                bundle.putString("DieselQuantity", String.valueOf(listdata.get(position).getTotalDiesel()));
+                bundle.putString("Name", listdata.get(position).getName());
+                System.out.println("=============================================");
+                System.out.println(bundle);
                 addFuelStationDetailsAdmin.setArguments(bundle);
                 FragmentTransaction mFragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
                 mFragmentTransaction.replace(R.id.flFragment, addFuelStationDetailsAdmin).commit();
@@ -93,15 +95,15 @@ public class FuelStationAdminAdapter extends RecyclerView.Adapter<FuelStationAdm
 
         public TextView textView_1, textView_2, textView_3, textView_4, textView_5, textView_6, textView_7;
         public CardView cardView;
+        public Button button;
 
         public StationsAdminViewHolder(View itemView) {
 
             super(itemView);
             this.textView_1 = (TextView) itemView.findViewById(R.id.station_name);
             this.textView_2 = (TextView) itemView.findViewById(R.id.station_address);
-            this.textView_3 = (TextView) itemView.findViewById(R.id.station_open);
-            this.textView_4 = (TextView) itemView.findViewById(R.id.station_close);
-            this.textView_5 = (TextView) itemView.findViewById(R.id.station_status);
+            this.textView_3 = (TextView) itemView.findViewById(R.id.station_id);
+            this.button = (Button) itemView.findViewById(R.id.view_btn);
             cardView = itemView.findViewById(R.id.stations_list_all_card_view_admin);
 
         }

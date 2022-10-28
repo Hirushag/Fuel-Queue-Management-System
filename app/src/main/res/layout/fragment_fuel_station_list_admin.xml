@@ -2,14 +2,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.fuelStation.FuelStationListAdmin">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/stations_list_all_card_view_admin"
         android:layout_width="match_parent"
-        android:layout_height="262dp"
+        android:layout_height="278dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
         android:elevation="6dp"
@@ -19,7 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="232dp"
+            android:layout_height="253dp"
             android:layout_margin="10dp"
 
             >
@@ -38,63 +38,32 @@
                 app:layout_constraintVertical_bias="0.006" />
 
             <TextView
+                android:id="@+id/station_id"
+                android:layout_width="128dp"
+                android:layout_height="51dp"
+                android:text="@string/space"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.919"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.16" />
+
+            <TextView
                 android:id="@+id/station_address"
-                android:layout_width="123dp"
-                android:layout_height="34dp"
+                android:layout_width="125dp"
+                android:layout_height="48dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
                 android:text="@string/space"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.973"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/station_name"
-                app:layout_constraintVertical_bias="0.012" />
-
-            <TextView
-                android:id="@+id/station_open"
-                android:layout_width="121dp"
-                android:layout_height="39dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/space"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/station_address"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.431" />
-
-            <TextView
-                android:id="@+id/station_close"
-                android:layout_width="120dp"
-                android:layout_height="41dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/space"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.9"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.76" />
-
-            <TextView
-                android:id="@+id/station_status"
-                android:layout_width="125dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/text_view_yellow_coner"
-                android:text="@string/space"
-                android:textColor="#090909"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.898"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.961" />
+                app:layout_constraintTop_toBottomOf="@+id/station_name"
+                app:layout_constraintVertical_bias="0.114" />
 
             <TextView
                 android:id="@+id/sl_1"
@@ -106,43 +75,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.036" />
+                app:layout_constraintVertical_bias="0.417" />
 
             <TextView
-                android:id="@+id/sl_3"
+                android:id="@+id/sl_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="@string/station_open"
+                android:text="@string/station_id"
                 android:textColor="#070707"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.46" />
-
-            <TextView
-                android:id="@+id/sl_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@string/station_close"
-                android:textColor="#070707"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.714" />
-
-            <TextView
-                android:id="@+id/sl_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="@string/station_status"
-                android:textColor="#070707"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.937" />
+                app:layout_constraintVertical_bias="0.14" />
 
             <TextView
                 android:id="@+id/sl_2"
@@ -154,7 +99,21 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.236" />
+                app:layout_constraintVertical_bias="0.615" />
+
+            <Button
+                android:id="@+id/view_btn"
+                android:layout_width="105dp"
+                android:layout_height="35dp"
+                app:backgroundTint="@color/selected_background"
+                android:text="@string/view_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/station_address"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toStartOf="@+id/station_address"
+                app:layout_constraintTop_toBottomOf="@+id/station_address"
+                app:layout_constraintVertical_bias="0.466"
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

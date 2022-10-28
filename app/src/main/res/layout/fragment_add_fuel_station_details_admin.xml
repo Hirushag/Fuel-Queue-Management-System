@@ -29,8 +29,8 @@
 
             <EditText
                 android:id="@+id/fuel_quantity"
-                android:layout_width="300dp"
-                android:layout_height="48dp"
+                android:layout_width="272dp"
+                android:layout_height="47dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/border_view_bg"
                 android:inputType="number"
@@ -169,6 +169,18 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="0dp" />
 
+            <TextView
+                android:id="@+id/fuel_type3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open_close_status"
+                android:textColor="#070707"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_quantity"
+                app:layout_constraintVertical_bias="0.18"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp" />
+
             <Spinner
                 android:id="@+id/spinner_fuel"
                 android:layout_width="296dp"
@@ -178,6 +190,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fuel_type"
                 tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/open_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open_station"
+                app:layout_constraintBottom_toTopOf="@+id/station_update"
+                app:layout_constraintEnd_toEndOf="@+id/fuel_quantity"
+                app:layout_constraintHorizontal_bias="0.326"
+                app:layout_constraintStart_toStartOf="@+id/fuel_quantity"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_quantity"
+                app:layout_constraintVertical_bias="0.68" />
+
+            <Button
+                android:id="@+id/close_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF0000"
+                android:text="@string/close_station"
+                app:layout_constraintBottom_toTopOf="@+id/station_update"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.699"
+                app:layout_constraintStart_toStartOf="@+id/fuel_quantity"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_quantity"
+                app:layout_constraintVertical_bias="0.68" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

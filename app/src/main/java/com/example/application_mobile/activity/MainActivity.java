@@ -6,18 +6,51 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.application_mobile.DbHelper.DbHelper;
 import com.example.application_mobile.R;
 import com.example.application_mobile.fragment.fuelStation.FuelStation;
 import com.example.application_mobile.fragment.fuelStation.FuelStationAdmin;
+import com.example.application_mobile.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+
+   private String currentUser;
+
+   private String user;
+
+
+   DbHelper dbHelper;
+
+   User user_ = new User();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        Bundle extra = getIntent().getExtras();
+
+        currentUser = extra.getString("email");
+
+        System.out.println(currentUser);
+        System.out.println("USR");
+
+
+        System.out.println("============USER==============");
+
+//        String.valueOf(dbHelper.getUserData(currentUser));
+         this.dbHelper.getUserData(currentUser);
+
+//        System.out.println(user3.getName());
+
+
+
+        System.out.println("============USER==============");
+//        System.out.println(user3);
+
 
         BottomNavigationView bottomNavigationView;
         bottomNavigationView = findViewById(R.id.bottomNavigationView);

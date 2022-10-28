@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.WelcomePage">
 
     <Button
-        android:id="@+id/delivery_button"
+        android:id="@+id/next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
@@ -19,11 +18,13 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="440dp"
-        android:layout_height="760dp"
+        android:layout_width="451dp"
+        android:layout_height="706dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/images"
-        tools:layout_editor_absoluteX="-15dp"
-        tools:layout_editor_absoluteY="-51dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -35,28 +36,9 @@
         android:textColor="@color/design_default_color_background"
         android:textSize="150px"
         app:flow_horizontalAlign="center"
-
+        app:layout_constraintBottom_toTopOf="@+id/next_btn"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="103dp" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="323dp"
-        android:layout_height="146dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Welcome ..."
-        android:textColor="@color/design_default_color_background"
-        android:textSize="90px"
-        app:flow_horizontalAlign="center"
-
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="464dp" />
+        tools:layout_editor_absoluteX="44dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-

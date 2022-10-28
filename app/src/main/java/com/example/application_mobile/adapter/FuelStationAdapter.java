@@ -70,6 +70,7 @@ public class FuelStationAdapter extends RecyclerView.Adapter<FuelStationAdapter.
                 bundle.putString("Id", listdata.get(position).getId());
                 bundle.putString("Name", listdata.get(position).getName());
                 bundle.putString("Address", listdata.get(position).getAddress());
+                bundle.putString("Town", listdata.get(position).getCity());
                 bundle.putString("OpenTime", listdata.get(position).getOpenDateTime());
                 bundle.putString("CloseTime", listdata.get(position).getCloseDateTime());
                 bundle.putString("Status", listdata.get(position).getIsOpen());

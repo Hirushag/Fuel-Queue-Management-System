@@ -36,19 +36,23 @@ import lombok.SneakyThrows;
 
 public class FuelStationDetail extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    private TextView  station_name, station_address,available_quantity,vehicle_quantity;
+    private TextView  station_name, station_address,available_quantity,vehicle_quantity,que_count,can_not_view,join_btn,sl_10,sl_7,sl_8;
     private Button petrol,diesel,exit_before,exit_after;
     private String fuelType = "PETROL";
     private String vehicle_type;
     private final Common common = new Common();
     private RequestQueue requestQueue;
     private JsonObjectRequest jsonObjectRequest;
+    private String station_id;
+    private String que_id;
+    private Boolean status;
 //    private List<FuelStationDetail> stationsList = new ArrayList<>();
 
     public FuelStationDetail() {
         // Required empty public constructor
     }
 
+    @SuppressLint("MissingInflatedId")
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -58,14 +62,44 @@ public class FuelStationDetail extends Fragment implements AdapterView.OnItemSel
         station_address = (TextView) view.findViewById(R.id.station_address);
         available_quantity = (TextView) view.findViewById(R.id.available_quantity);
         vehicle_quantity = (TextView) view.findViewById(R.id.vehicle_quantity);
+        que_count = (TextView) view.findViewById(R.id.que_count);
+        can_not_view = (TextView) view.findViewById(R.id.can_not_view);
+        sl_10 = (TextView) view.findViewById(R.id.sl_10);
+        sl_7 = (TextView) view.findViewById(R.id.sl_7);
+        sl_8 = (TextView) view.findViewById(R.id.sl_8);
         petrol = (Button) view.findViewById(R.id.petrol);
         diesel = (Button) view.findViewById(R.id.diesel);
+        exit_before = (Button) view.findViewById(R.id.exit_before);
+        exit_after = (Button) view.findViewById(R.id.exit_after);
+        join_btn = (Button) view.findViewById(R.id.join_btn);
+
+        Spinner spinner = (Spinner) view.findViewById(R.id.spinner_vehicle_type);
+        spinner.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.vehicle, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        exit_before.setVisibility(View.GONE);
+        exit_after.setVisibility(View.GONE);
+        can_not_view.setVisibility(View.GONE);
+        join_btn.setVisibility(View.GONE);
+        sl_10.setVisibility(View.GONE);
+        sl_7.setVisibility(View.GONE);
+        sl_8.setVisibility(View.GONE);
+        available_quantity.setVisibility(View.GONE);
+        vehicle_quantity.setVisibility(View.GONE);
+        que_count.setVisibility(View.GONE);
+
+
+
 
         petrol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fuelType = "PETROL";
-                diesel.setEnabled(false);
+                fuelType = "Petrol";
+              //  diesel.setEnabled(false);
+                getQuantity();
 
             }
         });
@@ -73,24 +107,21 @@ public class FuelStationDetail extends Fragment implements AdapterView.OnItemSel
         diesel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fuelType = "DIESEL";
-                petrol.setEnabled(false);
+                fuelType = "Diesel";
+                getQuantity();
+//                petrol.setEnabled(false);
 
             }
+
         });
 
 
         System.out.println(fuelType);
-        Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.vehicle, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
 
-        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
 
         //set data to data-bundle
         Bundle bundle = getArguments();
+        station_id = bundle.getString("Id");
         station_name.setText(bundle.getString("Name"));
         station_address.setText(bundle.getString("Address"));
 
@@ -98,48 +129,16 @@ public class FuelStationDetail extends Fragment implements AdapterView.OnItemSel
         return view;
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    private void getQuantityAfter(){
 
-        switch (position){
-            case 1:{
-                vehicle_type = "CAR";
-                break;
-            }
-            case 2:{
-                vehicle_type = "BIKE";
-                break;
-            }
-            case 3:{
-                vehicle_type = "VAN";
-                break;
-            }
-            case 4:{
-                vehicle_type = "LORRY";
-                break;
-            }
-            default: {
-                vehicle_type = "SELECT A VEHICLE";
-                break;
-            }
-        }
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    private void getQuantity() {
-        System.out.println( common.getGET_FUEL_QUANTITIES());
+        System.out.println( common.getGET_FUEL_QUANTITIES()+station_id+"&type="+fuelType+"&vehicleType="+vehicle_type);
         //RequestQueue initialized
         requestQueue = Volley.newRequestQueue(getContext());
 
-        jsonObjectRequest = new JsonObjectRequest(
+        jsonObjectRequest  = new JsonObjectRequest(
 
                 Request.Method.GET,
-                common.getGET_FUEL_QUANTITIES(),
+                common.getGET_FUEL_QUANTITIES()+station_id+"&type="+fuelType+"&vehicleType="+vehicle_type,
                 null,
 
                 new Response.Listener<JSONObject>() {
@@ -151,11 +150,117 @@ public class FuelStationDetail extends Fragment implements AdapterView.OnItemSel
 
                         Log.i("Response is {} ", response.toString());
 
+                        try {
 
-                            try {
+                            available_quantity.setText(response.getString("Quantity").concat("L"));
+                            vehicle_quantity.setText(response.getString("VehicaleCount"));
+                            que_count.setText(response.getString("Quecount"));
 
-                                available_quantity.setText(response.getString("available_quantity"));
-                                vehicle_quantity.setText(response.getString("vehicle_quantity"));
+
+                        } catch (JSONException e) {
+
+                            e.printStackTrace();
+                        }
+
+                        return;
+                    }
+
+                }, (Response.ErrorListener) error -> Log.e("Response {} ", error.toString())
+
+        );
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+
+    private void getQuantity() {
+        System.out.println( common.getGET_FUEL_QUANTITIES()+station_id+"&type="+fuelType+"&vehicleType="+vehicle_type);
+        //RequestQueue initialized
+        requestQueue = Volley.newRequestQueue(getContext());
+
+        jsonObjectRequest  = new JsonObjectRequest(
+
+                Request.Method.GET,
+                common.getGET_FUEL_QUANTITIES()+station_id+"&type="+fuelType+"&vehicleType="+vehicle_type,
+                null,
+
+                new Response.Listener<JSONObject>() {
+
+                    @SuppressLint("LongLogTag")
+                    @SneakyThrows
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        Log.i("Response is {} ", response.toString());
+
+                        System.out.println("DETAIL LIST====================");
+                        System.out.println(response.toString());
+
+
+
+                        try {
+
+                                sl_10.setVisibility(View.VISIBLE);
+                                sl_7.setVisibility(View.VISIBLE);
+                                sl_8.setVisibility(View.VISIBLE);
+
+                                available_quantity.setText(response.getString("Quantity").concat("L"));
+                                vehicle_quantity.setText(response.getString("VehicaleCount"));
+                                que_count.setText(response.getString("Quecount"));
+
+                                available_quantity.setVisibility(View.VISIBLE);
+                                vehicle_quantity.setVisibility(View.VISIBLE);
+                                que_count.setVisibility(View.VISIBLE);
+
+
+                                if(response.getInt("VehicaleCount") == 0){
+
+                                    exit_after.setVisibility(View.GONE);
+                                    join_btn.setVisibility(View.GONE);
+                                    exit_before.setVisibility(View.GONE);
+                                    can_not_view.setVisibility(View.VISIBLE);
+
+                                }else{
+                                    join_btn.setVisibility(View.VISIBLE);
+
+                                    join_btn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+
+                                            ChangeButtonStatusToJoin();
+                                            join_btn.setVisibility(View.GONE);
+                                            exit_after.setVisibility(View.VISIBLE);
+                                            exit_before.setVisibility(View.VISIBLE);
+
+                                            exit_before.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+
+                                                    status = false;
+
+                                                    ExitFromTheQue();
+                                                    join_btn.setVisibility(View.VISIBLE);
+                                                    exit_after.setVisibility(View.GONE);
+                                                    exit_before.setVisibility(View.GONE);
+                                                }
+                                            });
+
+                                            exit_after.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    status = true;
+
+                                                    ExitFromTheQue();
+//                                                    exit_before.setVisibility(View.GONE);
+
+                                                }
+                                            });
+
+                                        }
+                                    });
+
+
+                                }
 
                             } catch (JSONException e) {
 
@@ -172,6 +277,120 @@ public class FuelStationDetail extends Fragment implements AdapterView.OnItemSel
 
     }
 
+    private void ChangeButtonStatusToJoin(){
+
+        System.out.println( common.getJOIN_TO_QUE());
+        //RequestQueue initialized
+        requestQueue = Volley.newRequestQueue(getContext());
+        JSONObject jsonBody = new JSONObject();
+
+        try {
+            jsonBody.put("VehicleType", vehicle_type);
+            jsonBody.put("StationId", station_id);
+            jsonBody.put("UserId", "Gagana123");
+            jsonBody.put("'FuleType'", fuelType);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("JBODY===============");
+        System.out.println(jsonBody);
+
+        jsonObjectRequest   = new JsonObjectRequest(
+
+                Request.Method.POST,
+                common.getJOIN_TO_QUE(),
+                jsonBody,
+
+                new Response.Listener<JSONObject>() {
+
+                    @SuppressLint("LongLogTag")
+                    @SneakyThrows
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        Log.i("Response is {} ", response.toString());
+
+                        System.out.println("DETAIL LIST====================");
+                        System.out.println(response.toString());
+                        getQuantityAfter();
+
+                        try {
+                            que_id = response.getString("Id");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        return;
+                    }
+
+                }, (Response.ErrorListener) error -> Log.e("Response {} ", error.toString())
+
+        );
+        requestQueue.add(jsonObjectRequest);
 
 
+
+    }
+
+    private void ExitFromTheQue(){
+
+        System.out.println( common.getEXIT_FROM_THE_QUE());
+        //RequestQueue initialized
+        requestQueue = Volley.newRequestQueue(getContext());
+
+
+        System.out.println("JBODY22222222222===============");
+
+
+        jsonObjectRequest   = new JsonObjectRequest(
+
+                Request.Method.POST,
+                common.getEXIT_FROM_THE_QUE()+que_id+"&type="+fuelType+"&status="+status,
+                null,
+
+                new Response.Listener<JSONObject>() {
+
+                    @SuppressLint("LongLogTag")
+                    @SneakyThrows
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        Log.i("Response is {} ", response.toString());
+
+                        System.out.println("DETAIL LIST2222222222222222====================");
+                        System.out.println(response.toString());
+                        getQuantityAfter();
+
+                        try {
+                            que_id = response.getString("Id");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        return;
+                    }
+
+                }, (Response.ErrorListener) error -> Log.e("Response {} ", error.toString())
+
+        );
+        requestQueue.add(jsonObjectRequest);
+
+
+
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        vehicle_type = (String) parent.getItemAtPosition(position);
+        System.out.println(vehicle_type);
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

@@ -7,16 +7,46 @@ import lombok.Getter;
 @Getter
 public class Common {
 
-    private  String URL = "http://192.168.1.5:8088/api/v1/";
-    private  String ADD_FUEL_STATION = "https://oktane-live.herokuapp.com/api/GasStation";
+    private String URL = "http://192.168.1.5:8088/api/v1/";
+    private String ADD_FUEL_STATION = "https://oktane-live.herokuapp.com/api/GasStation";
     private String GET_FUEL_STATIONS = "https://oktane-live.herokuapp.com/api/GasStation";
-    private String GET_FUEL_STATIONS_BY_USER = "https://oktane-live.herokuapp.com/api/GasStation";
-    private String GET_FUEL_QUANTITIES = "https://oktane-live.herokuapp.com/api/GasStation";
-    private String UPDATE_FUELQUANTITY = "https://oktane-live.herokuapp.com/api/GasStation";
-    private String CHANGE_QUE_STATUS = "https://oktane-live.herokuapp.com/api/GasStation/status";
-    private String GET_DATA_BY_OWNER_ID = "https://oktane-live.herokuapp.com/api/GasStation";
-    private String LOGIN = "https://oktane-live.herokuapp.com/api/GasStation";
-    private String SIGN_UP = "https://oktane-live.herokuapp.com/api/GasStation";
+
+
+
+    private String GET_FUEL_QUANTITIES = "https://oktane-live.herokuapp.com/GetQueueStatus?stationId=";
+    private String UPDATE_FUEL_QUANTITY = "https://oktane-live.herokuapp.com/save/fuel";
+    private String GET_FUEL_STATIONS_BY_USER = "https://oktane-live.herokuapp.com/api/GasStation/";
+    private String GET_FUEL_STATIONS_BY_ADMINID = "https://oktane-live.herokuapp.com/GetStationByUserId?userId=";
+    private String JOIN_TO_QUE = "https://oktane-live.herokuapp.com/save/arrival-que";
+    private String EXIT_FROM_THE_QUE = "https://oktane-live.herokuapp.com/save/historyque?queueId=";
+    private String UPDATE_OPEN_CLOSE_STATUS = "https://oktane-live.herokuapp.com/change-status/station?stationId=";
+
+
+
+    public String getUPDATE_OPEN_CLOSE_STATUS() {
+        return UPDATE_OPEN_CLOSE_STATUS;
+    }
+
+    public void setUPDATE_OPEN_CLOSE_STATUS(String UPDATE_OPEN_CLOSE_STATUS) {
+        this.UPDATE_OPEN_CLOSE_STATUS = UPDATE_OPEN_CLOSE_STATUS;
+    }
+
+
+    public String getJOIN_TO_QUE() {
+        return JOIN_TO_QUE;
+    }
+
+    public String getEXIT_FROM_THE_QUE() {
+        return EXIT_FROM_THE_QUE;
+    }
+
+    public void setEXIT_FROM_THE_QUE(String EXIT_FROM_THE_QUE) {
+        this.EXIT_FROM_THE_QUE = EXIT_FROM_THE_QUE;
+    }
+
+    public void setJOIN_TO_QUE(String JOIN_TO_QUE) {
+        this.JOIN_TO_QUE = JOIN_TO_QUE;
+    }
 
     public String getGET_FUEL_STATIONS_BY_USER() {
         return GET_FUEL_STATIONS_BY_USER;
@@ -26,72 +56,12 @@ public class Common {
         this.GET_FUEL_STATIONS_BY_USER = GET_FUEL_STATIONS_BY_USER;
     }
 
-    public String getUPDATE_FUELQUANTITY() {
-        return UPDATE_FUELQUANTITY;
+    public String getGET_FUEL_STATIONS_BY_ADMINID() {
+        return GET_FUEL_STATIONS_BY_ADMINID;
     }
 
-    public void setUPDATE_FUELQUANTITY(String UPDATE_FUELQUANTITY) {
-        this.UPDATE_FUELQUANTITY = UPDATE_FUELQUANTITY;
-    }
-
-    public String getCHANGE_QUE_STATUS() {
-        return CHANGE_QUE_STATUS;
-    }
-
-    public void setCHANGE_QUE_STATUS(String CHANGE_QUE_STATUS) {
-        this.CHANGE_QUE_STATUS = CHANGE_QUE_STATUS;
-    }
-
-    public String getGET_DATA_BY_OWNER_ID() {
-        return GET_DATA_BY_OWNER_ID;
-    }
-
-    public void setGET_DATA_BY_OWNER_ID(String GET_DATA_BY_OWNER_ID) {
-        this.GET_DATA_BY_OWNER_ID = GET_DATA_BY_OWNER_ID;
-    }
-
-    public String getLOGIN() {
-        return LOGIN;
-    }
-
-    public void setLOGIN(String LOGIN) {
-        this.LOGIN = LOGIN;
-    }
-
-    public String getSIGN_UP() {
-        return SIGN_UP;
-    }
-
-    public void setSIGN_UP(String SIGN_UP) {
-        this.SIGN_UP = SIGN_UP;
-    }
-
-    private  String JSON_PREFIX = "dataBundle";
-
-    public String getGET_FUEL_QUANTITIES() {
-        return GET_FUEL_QUANTITIES;
-    }
-
-    public void setGET_FUEL_QUANTITIES(String GET_FUEL_QUANTITIES) {
-        this.GET_FUEL_QUANTITIES = GET_FUEL_QUANTITIES;
-    }
-
-
-
-    public String getJSON_PREFIX() {
-        return JSON_PREFIX;
-    }
-
-    public void setJSON_PREFIX(String JSON_PREFIX) {
-        this.JSON_PREFIX = JSON_PREFIX;
-    }
-
-    public String getGET_FUEL_STATIONS() {
-        return GET_FUEL_STATIONS;
-    }
-
-    public void setGET_FUEL_STATIONS(String GET_FUEL_STATIONS) {
-        this.GET_FUEL_STATIONS = GET_FUEL_STATIONS;
+    public void setGET_FUEL_STATIONS_BY_ADMINID(String GET_FUEL_STATIONS_BY_ADMINID) {
+        this.GET_FUEL_STATIONS_BY_ADMINID = GET_FUEL_STATIONS_BY_ADMINID;
     }
 
     public String getURL() {
@@ -109,4 +79,39 @@ public class Common {
     public void setADD_FUEL_STATION(String ADD_FUEL_STATION) {
         this.ADD_FUEL_STATION = ADD_FUEL_STATION;
     }
+
+    public String getGET_FUEL_STATIONS() {
+        return GET_FUEL_STATIONS;
+    }
+
+    public void setGET_FUEL_STATIONS(String GET_FUEL_STATIONS) {
+        this.GET_FUEL_STATIONS = GET_FUEL_STATIONS;
+    }
+
+//    public String getGET_FUEL_STATIONS_BY_USER() {
+//        return GET_FUEL_STATIONS_BY_USER;
+//    }
+//
+//    public void setGET_FUEL_STATIONS_BY_USER(String GET_FUEL_STATIONS_BY_USER) {
+//        this.GET_FUEL_STATIONS_BY_USER = GET_FUEL_STATIONS_BY_USER;
+//    }
+
+    public String getGET_FUEL_QUANTITIES() {
+        return GET_FUEL_QUANTITIES;
+    }
+
+    public void setGET_FUEL_QUANTITIES(String GET_FUEL_QUANTITIES) {
+        this.GET_FUEL_QUANTITIES = GET_FUEL_QUANTITIES;
+    }
+
+    public String getUPDATE_FUEL_QUANTITY() {
+        return UPDATE_FUEL_QUANTITY;
+    }
+
+    public void setUPDATE_FUEL_QUANTITY(String UPDATE_FUEL_QUANTITY) {
+        this.UPDATE_FUEL_QUANTITY = UPDATE_FUEL_QUANTITY;
+    }
+
+
+
 }

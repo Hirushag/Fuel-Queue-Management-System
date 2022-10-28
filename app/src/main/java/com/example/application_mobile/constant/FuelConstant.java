@@ -1,7 +1,5 @@
 package com.example.application_mobile.constant;
 
-import java.sql.Time;
-
 import lombok.Data;
 
 @Data
@@ -21,6 +19,25 @@ public class FuelConstant {
     private String OnTheWayQue = "OnTheWayQue";
     private String Que = "Que";
     private String HistoryQue = "HistoryQue";
+    private String TotalPetrol = "TotalPetrol";
+    private String TotalDiesel = "TotalDiesel";
+
+
+    public String getTotalPetrol() {
+        return TotalPetrol;
+    }
+
+    public void setTotalPetrol(String totalPetrol) {
+        TotalPetrol = totalPetrol;
+    }
+
+    public String getTotalDiesel() {
+        return TotalDiesel;
+    }
+
+    public void setTotalDiesel(String totalDiesel) {
+        TotalDiesel = totalDiesel;
+    }
 
     public String getId() {
         return Id;
